@@ -1,6 +1,7 @@
 load('/projects/sst_noaa/daily_output/noaa_hiRes_sst.mat')
 load('/projects/sst_noaa/geo_noaa_hiRes_sst.mat')
 addpath /git/timeseriestools
+addpath /git/cdt
 %%
 [overlay_table,overlay_table_cumsum,tbl] = timetable2overlaystructure(SST)
 %%
