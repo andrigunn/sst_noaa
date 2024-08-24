@@ -82,7 +82,7 @@ set(gca, ...
     'LineWidth'   , 1         );
 %% save data to image folder
 cd '/projects/sst_noaa/daily_output'
-exportgraphics(gcf,'SSTMA_daily.jpg');
+exportgraphics(gcf,'SSTMA_10month_movmean_daily.jpg');
 exportgraphics(gcf,'SSTMA_10month_movmean_daily.pdf');
 
 %% Dagsmeðaltöl
@@ -150,7 +150,7 @@ set(gca, ...
     'XColor'      , [.3 .3 .3], ...
     'YColor'      , [.3 .3 .3], ...
     'LineWidth'   , 1         );
-%% save data to image folder
+% save data to image folder
 cd '/projects/sst_noaa/daily_output'
 exportgraphics(gcf,'SST_daily_all_time.jpg');
 exportgraphics(gcf,'SST_daily_all_time.pdf');
