@@ -3,7 +3,9 @@ load('/projects/sst_noaa/geo_noaa_hiRes_sst.mat')
 addpath /git/timeseriestools
 addpath /git/cdt
 %%
-[overlay_table,overlay_table_cumsum,tbl] = timetable2overlaystructure(SST)
+baseline_period = [datetime(1990,01,01),datetime(2020,12,31)];
+
+[overlay_table,overlay_table_cumsum,tbl] = timetable2overlaystructure(SST,baseline_period)
 %%
 set(0,'defaultfigurepaperunits','centimeters');
 set(0,'DefaultAxesFontSize',16)
