@@ -13,13 +13,19 @@ set(0, 'DefaultFigureUnits', 'centimeters');
 set(0, 'DefaultFigurePosition', [.25 .25 [35 21]-0.5]);
 
 % Load Lat and Lon for NOAA HiRes SST
-load(['/projects/sst_noaa/geo_noaa_hiRes_sst.mat']);
+if ismac
+    load(['/Volumes/data/projects/sst_noaa/geo_noaa_hiRes_sst.mat']);
+    cd /Volumes//data/sst_noaa
+elseif isunix
+    load(['/data/projects/sst_noaa/geo_noaa_hiRes_sst.mat']);
+    cd /data/sst_noaa
+end
 geo.lat_noaa_sst = Lat;
 geo.lon_noaa_sst = Lon;
 %%
 now_time = datetime('now');
 now_year = now_time.Year;
-cd /data/sst_noaa
+
 d = dir(['sst.day.mean.',num2str(now_year),'.nc']);
 
 %% Make newest day 
@@ -53,14 +59,20 @@ d = dir(['sst.day.mean.',num2str(now_year),'.nc']);
     ylabel(cb,'Sjávarhiti (°C)','FontSize',16,'Rotation',270)
 
     title(['Sjávarhiti fyrir ',datestr(time_today)])
-
-    cd '/projects/sst_noaa/daily_output'
-    exportgraphics(gcf,'sst_daily_today_map.jpg');
-    exportgraphics(gcf,'sst_daily_today_map.pdf');
+    if ismac
+        
+    else
+        cd '/projects/sst_noaa/daily_output'
+        exportgraphics(gcf,'sst_daily_today_map.jpg');
+        exportgraphics(gcf,'sst_daily_today_map.pdf');
+    end
 
 %% Make the daily anomaly
-
-d = dir('/data/sst_noaa/sst.day.mean.ltm.1991-2020.nc')
+    if ismac
+        d = dir('/Volumes/data/sst_noaa/sst.day.mean.ltm.1991-2020.nc')
+    else
+        d = dir('/data/sst_noaa/sst.day.mean.ltm.1991-2020.nc')
+    end
 
     fname = [d(i).folder,filesep,d(i).name];
     time = ncread(fname,'time');
@@ -99,6 +111,11 @@ sst_today_anomaly = sst_today-sst_ltm;
     
     title(['Frávik sjávarhita fyrir ',datestr(time_today)])
 
-    cd '/projects/sst_noaa/daily_output'
-    exportgraphics(gcf,'sst_daily_today_map_anomaly.jpg');
+    if ismac
+        
+    else
+        cd '/projects/sst_noaa/daily_output'
+        exportgraphics(gcf,'sst_daily_today_map_anomaly.jpg');
         exportgraphics(gcf,'sst_daily_today_map_anomaly.pdf');
+    end
+
