@@ -1,5 +1,5 @@
-load('/projects/sst_noaa/daily_output/noaa_hiRes_sst.mat')
-load('/projects/sst_noaa/geo_noaa_hiRes_sst.mat')
+load('/data/projects/sst_noaa/daily_output/noaa_hiRes_sst.mat')
+load('/data/projects/sst_noaa/geo_noaa_hiRes_sst.mat')
 addpath /git/timeseriestools
 addpath /git/cdt
 %%
@@ -83,7 +83,7 @@ set(gca, ...
     'YColor'      , [.3 .3 .3], ...
     'LineWidth'   , 1         );
 %% save data to image folder
-cd '/projects/sst_noaa/daily_output'
+cd '/data/projects/sst_noaa/daily_output'
 exportgraphics(gcf,'SSTMA_10month_movmean_daily.jpg');
 exportgraphics(gcf,'SSTMA_10month_movmean_daily.pdf');
 
@@ -153,7 +153,7 @@ set(gca, ...
     'YColor'      , [.3 .3 .3], ...
     'LineWidth'   , 1         );
 % save data to image folder
-cd '/projects/sst_noaa/daily_output'
+cd '/data/projects/sst_noaa/daily_output'
 exportgraphics(gcf,'SST_daily_all_time.jpg');
 exportgraphics(gcf,'SST_daily_all_time.pdf');
 %%
@@ -224,7 +224,7 @@ set(gca, ...
 
 xlim([datetime('now')-calmonths(6),datetime('now')])
 %% save data to image folder
-cd '/projects/sst_noaa/daily_output'
+cd '/data/projects/sst_noaa/daily_output'
 exportgraphics(gcf,'SST_daily_6mo.jpg');
 exportgraphics(gcf,'SST_daily_6mo.pdf');
 %% Overlay plotting
@@ -260,7 +260,7 @@ for i = 1:length(fnames)
         ylabel_name,text_lower_right)
 
 %% save data to image folder
-    cd '/projects/sst_noaa/daily_output'
+    cd '/data/projects/sst_noaa/daily_output'
     exportgraphics(gcf,['SST_overlay_',char(fname),'.jpg']);
     exportgraphics(gcf,['SST_overlay_',char(fname),'.pdf']);
 end
