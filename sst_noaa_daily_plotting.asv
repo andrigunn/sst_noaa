@@ -270,8 +270,9 @@ for i = 1:length(fnames)
 
     unit = '°C';
     ylabel_name = 'Sjávarhiti';
-    
-    text_lower_right = ['Gögn: SST-NOAA-OISST.v2.highres - Viðmið: ',num2str(baseline_period.Year(1)),' - ',num2str(baseline_period.Year(2))];
+    text_lower_right = 'Gögn: SST-NOAA-OISST.v2.highres';
+
+    ['Viðmið: ',num2str(baseline_period.Year(1)),' - ',num2str(baseline_period.Year(2))]
 
     plt_overlay(overlay_table.(string(fname)),tbl.(string(fname)),...
         years2plot,fig_title,unit,...
